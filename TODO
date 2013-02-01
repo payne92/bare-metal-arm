@@ -1,0 +1,22 @@
+
+Framework
+---------
+
+- Block USB device, w/ simple framework
+
+- gdb protocol interface
+
+- Simple cooperative multi-tasking/context switching
+http://www.coactionos.com/embedded-design/36-context-switching-on-the-cortex-m3.html
+
+- assert(), fault to send 
+
+- Test cases
+
+- Implement/include CMSIS library?
+
+Dev Tools
+---------
+
+Python / UI tool to copy new binaries, and provide interface to serial port
+
