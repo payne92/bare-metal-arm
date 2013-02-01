@@ -5,11 +5,11 @@ This is a "bare metal" runtime for the Freescale Freedom FRDM-KL25Z ARM developm
 builds with GCC ARM toolchain, with no other external dependencies. 
 
 Quick start on Linux:
-* Clone the repo: 'git clone git@github.com:payne92/bare-metal-arm.git'
-* Grab and unpack GCC ARM toolchain: 'cd bare-metal-arm; make gcc-arm'
+* Clone the repo: `git clone git@github.com:payne92/bare-metal-arm.git`
+* Grab and unpack GCC ARM toolchain: `cd bare-metal-arm; make gcc-arm`
 * 'make'
 
-This will create a 'demo.srec' image file to flash onto the development board.  (If you're using
+This will create a `demo.srec` image file to flash onto the development board.  (If you're using
 the standard bootloader, plug SDA USB port to a host computer and then copy the .SREC file
 to the FRDM-KL25Z block device.)  
 
