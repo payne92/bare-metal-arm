@@ -1,7 +1,4 @@
 
-//
-//  Copyright (c) 2012-2013 Andrew Payne <andy@payne.org>
-//
 
 // USB standard request codes
 #define mGET_STATUS           0
@@ -90,10 +87,6 @@ typedef struct {
 
 // --------------------------------------------------------------------------------------
 
-//
-//////////////CDC/////////
-
-/* CDC */
 #define CDC_COMM_INTF_ID        0x00
 #define CDC_COMM_UEP            UEP2
 #define CDC_INT_BD_IN           ep2Bi
@@ -105,8 +98,6 @@ typedef struct {
 #define CDC_BULK_OUT_EP_SIZE    8
 #define CDC_BULK_BD_IN          ep3Bi
 #define CDC_BULK_IN_EP_SIZE     8
-
-/** D E F I N I T I O N S ****************************************************/
 
 /* Class-Specific Requests */
 #define SEND_ENCAPSULATED_COMMAND   0x00
@@ -126,7 +117,6 @@ typedef struct {
 #define NETWORK_CONNECTION          0x00
 #define RESPONSE_AVAILABLE          0x01
 #define SERIAL_STATE                0x20
-
 
 /* Device Class Code */
 #define CDC_DEVICE                  0x02
@@ -175,8 +165,6 @@ typedef struct {
 #define CDC_TX_BUSY                 1
 #define CDC_TX_BUSY_ZLP             2       // ZLP: Zero Length Packet
 #define CDC_TX_COMPLETING           3
-
-/** S T R U C T U R E S ******************************************************/
 
 /* Line Coding Structure */
 #define LINE_CODING_LENGTH          0x07
