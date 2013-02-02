@@ -2,10 +2,10 @@
 /* Configure memory regions */
 MEMORY
 {
-  VECTORS (rx) : ORIGIN = 0x0, LENGTH = 0x00c0
-  FLASHCFG  (rx) : ORIGIN = 0x00000400, LENGTH = 0x00000010
-  FLASH (rx) : ORIGIN = 0x0410, LENGTH = 128K - 0x800
-  RAM  (rwx) : ORIGIN = 0x20000000, LENGTH = 12K
+  VECTORS (rx)      : ORIGIN = 0x0,         LENGTH = 0x00c0
+  FLASHCFG (rx)     : ORIGIN = 0x00000400,  LENGTH = 0x00000010
+  FLASH (rx)        : ORIGIN = 0x00000410,  LENGTH = 128K - 0x410
+  RAM  (rwx)        : ORIGIN = 0x20000000,  LENGTH = 12K
 }
 
 /* Config Libraries */
