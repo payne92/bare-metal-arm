@@ -8,13 +8,17 @@
 #include "freedom.h"
 #include "common.h"
 
-extern char __heap_start[];             // Defined by linker
+// Defined by linker
+extern char __heap_start[];
+extern char __StackTop[];
+
 extern char *_sbrk(int len);
 
 // Main program
 int main(void)
 {
     char i;
+    char *heap_end;
     
     // Initialize all modules
     uart_init(115200);
@@ -28,8 +32,10 @@ int main(void)
     // Welcome banner
     iprintf("\r\n\r\n====== Freescale Freedom FRDM-LK25Z\r\n");
     iprintf("Built: %s %s\r\n\r\n", __DATE__, __TIME__);
-    iprintf("Heap: %p to %p (%d bytes)\r\n", __heap_start, _sbrk(0), _sbrk(0)-__heap_start);
-    iprintf("Stack: %p (%d bytes free)\r\n", &i, &i - _sbrk(0));
+    heap_end = _sbrk(0);
+    iprintf("Heap:  %p to %p (%d bytes used)\r\n", __heap_start, heap_end, heap_end - __heap_start);
+    iprintf("Stack: %p to %p (%d bytes used)\r\n", &i, __StackTop, __StackTop - &i);
+    iprintf("%d bytes free\r\n", &i - heap_end);
     
     for(;;) {
         iprintf("monitor> ");
