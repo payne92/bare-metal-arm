@@ -57,3 +57,6 @@ int buf_isfull(RingBuffer *buf);
 int buf_isempty(RingBuffer *buf);
 uint8_t buf_get_byte(RingBuffer *buf);
 void buf_put_byte(RingBuffer *buf, uint8_t val);
+
+// tests.c
+void tests(void);

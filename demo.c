@@ -26,6 +26,9 @@ int main(void)
     touch_init((1 << 9) | (1 << 10));       // Channels 9 and 10
     // usb_init();
     setvbuf(stdin, NULL, _IONBF, 0);        // No buffering
+
+    // Run tests
+    tests();
     delay(500);
     RGB_LED(0,100,0);                       // Green
 

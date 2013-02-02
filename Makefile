@@ -14,7 +14,7 @@ CFLAGS = -ffunction-sections -fdata-sections -Wall -Wa,-adhlns="$@.lst" \
 		 $(DEBUG_OPTS) $(OPTS) -I .
 
 LIBOBJS = _startup.o syscalls.o uart.o delay.o accel.o touch.o usb.o \
-		ring.o
+		ring.o tests.o
 
 INCLUDES = freedom.h common.h
 
