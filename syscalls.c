@@ -44,3 +44,10 @@ char *_sbrk(int incr)
     heap_end += incr;                   // TODO:  check for collisions with the stack
     return (heap_end - incr);
 }
+
+// Signal handler (fault)
+int _kill(int pid, int sig)
+{
+    fault(0b11111110);
+    return -1;                          // Never gets here
+}
