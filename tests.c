@@ -11,6 +11,11 @@
 // Defined by linker
 extern char __heap_start[];
 extern char __StackTop[];
+extern char __data_start__[];
+extern char __data_end__[];
+extern char __bss_start__[];
+extern char __bss_end__[];
+extern char __etext[];                // End of code/flash
 
 extern char *_sbrk(int len);
 
@@ -29,11 +34,17 @@ void tests(void)
 
     // Check memory layout
     assert(__heap_start <= heap_end);
+    assert(__heap_start >= __bss_end__);
     assert(heap_end < stack);
     assert(stack < __StackTop);
 
-    assert((char *) &init_zero < __heap_start);
-    assert((char *) &init_value < __heap_start);
+    assert((char *) &init_zero >= __bss_start__);
+    assert((char *) &init_zero < __bss_end__);
+
+    assert((char *) &init_value >= __data_start__);
+    assert((char *) &init_value < __data_end__);
+
+    assert((char *) &const_value < __etext);            // Stored in flash ROM
 
     // Check that variables are initialized properly
     assert(init_zero == 0);
