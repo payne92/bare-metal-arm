@@ -1,7 +1,7 @@
 Bare Metal Arm
 ==============
 
-This is a "bare metal" runtime for the Freescale Freedom FRDM-KL25Z ARM development board ($12). It builds
+This is a "bare metal" runtime for the Freescale Freedom FRDM-KL25Z ARM development board ($12). It
 builds with GCC ARM toolchain, with no other external dependencies. 
 
 Quick start on Linux:
