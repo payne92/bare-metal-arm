@@ -1,4 +1,3 @@
-
 Framework
 ---------
 
@@ -8,10 +7,6 @@ Framework
 
 - Simple cooperative multi-tasking/context switching
 http://www.coactionos.com/embedded-design/36-context-switching-on-the-cortex-m3.html
-
-- assert(), fault to send 
-
-- Test cases
 
 - Implement/include CMSIS library?
 
