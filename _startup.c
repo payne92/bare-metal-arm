@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void _reset_init(void)    __attribute__((naked, aligned(8), optimize("O0")));
+void _reset_init(void)    __attribute__((naked, aligned(8)));
 extern char __StackTop[];
 extern void _start(void);                   // newlib C lib initialization
 
