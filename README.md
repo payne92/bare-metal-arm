@@ -1,8 +1,9 @@
 Bare Metal Arm
 ==============
 
-This is a "bare metal" runtime for the Freescale Freedom FRDM-KL25Z ARM development board ($12). It
-builds with the GCC ARM toolchain, with no other external dependencies. 
+This is a "bare metal" runtime for the 
+[Freescale Freedom FRDM-KL25Z](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KL25Z) 
+ARM development board ($12). It builds with the GCC ARM toolchain, with no other external dependencies. 
 
 Quick start on Linux:
 * Clone the repo: `git clone git@github.com:payne92/bare-metal-arm.git`
@@ -17,9 +18,9 @@ If everything is working, the RGB LEB will be steady green.  You can access the 
 and see the accelerometer and touch input status.
 
 References:
-* Freescale Freedom FRDM-KL25Z: http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KL25Z
-* GCC ARM toolchain:  https://launchpad.net/gcc-arm-embedded
-* Newlib: http://sourceware.org/newlib/
+* [Freescale Freedom FRDM-KL25Z](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KL25Z)
+* [GCC ARM toolchain](https://launchpad.net/gcc-arm-embedded)
+* [Newlib C library](http://sourceware.org/newlib/)
 
 Why do this?
 ------------
@@ -29,6 +30,16 @@ range of processors, libraries, and commerical C compilers.  These tools are usu
 complex configuration tools, lots of source macros and #ifdef statements, and code that's been ported
 down several generations of processors.
 
-In contrast, this project is a small (<1,000 lines) simple, and clean bare metal framework that builds 
+In contrast, this project is a small (<1,000 lines without USB) simple, and clean bare metal framework that builds 
 from the command line.  It has no external library or tool dependencies, only supports GCC, and has minimal use of
-assembly. 
+assembly.
+
+Walkthrough
+-----------
+
+The interrupt vectors and reset code are in `_startup.c`.  The CPU comes out of reset in `_reset_init()` which:
+* Copies initialized constant values from flash ROM to RAM
+* Configures the main clock (48Mhz)
+* Jumps to `_start()` in the Newlib C library
+
+After the C library is done initializing, it invokes `main()` (implemented in `demo.c`).
