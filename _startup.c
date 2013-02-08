@@ -305,7 +305,5 @@ void _reset_init(void)
     init_clocks();
     init_led_io();
     _start();                           // Goto C lib startup
-    
-    // ...should never get here.
-    __asm("bkpt");
+    fault(FAULT_FAST_BLINK);            // ...should never get here.
 }
