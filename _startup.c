@@ -295,10 +295,10 @@ void _reset_init(void)
     SCB_VTOR = (uint32_t)InterruptVector;
 
     // Copy values to initialize data segment
-    extern uint32_t __etext, __data_start__, __data_end__;
-    uint32_t *fr = &__etext;
-    uint32_t *to = &__data_start__;
-    unsigned int len = &__data_end__ - &__data_start__;
+    extern uint32_t __etext[], __data_start__[], __data_end__[];
+    uint32_t *fr = __etext;
+    uint32_t *to = __data_start__;
+    unsigned int len = __data_end__ - __data_start__;
     while(len--)
         *to++ = *fr++;
 
