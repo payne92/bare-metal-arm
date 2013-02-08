@@ -105,17 +105,12 @@ static void init_clocks(void)
         ;
 }
 
-// Blink an LED pattern based on the pattern bitmask
+// Blink an LED based on a pattern bitmask
 void fault(uint32_t pattern)
 {
-    uint32_t t = pattern;
-    
     for(;;) {
-        RGB_LED(t & 1 ? 100 : 0, 0, 0);         // Set RED led based on LSB
-        t = t >> 1;
-        if (t == 0)
-            t = pattern;
-            
+        RGB_LED(pattern & 1 ? 100 : 0, 0, 0);           // Set RED led based on LSB
+        pattern = (pattern >> 1) | (pattern << 31);     // Rotate
         delay(100);
     }
 }
