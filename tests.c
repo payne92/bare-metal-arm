@@ -8,20 +8,11 @@
 #include "common.h"
 #include <assert.h>
 
-// Defined by linker
-extern char __heap_start[];
-extern char __StackTop[];
-extern char __data_start__[];
-extern char __data_end__[];
-extern char __bss_start__[];
-extern char __bss_end__[];
-extern char __etext[];                // End of code/flash
-
 extern char *_sbrk(int len);
 
-static volatile int init_zero;
-static volatile int init_value = 0xdeadbeef;
-static const int const_value = 0x12345678;
+static volatile uint32_t init_zero;
+static volatile uint32_t init_value = 0xdeadbeef;
+static const uint32_t const_value = 0x12345678;
 
 // Run some basic test cases to make sure things are set up correctly
 void tests(void)
@@ -33,18 +24,18 @@ void tests(void)
     heap_end = _sbrk(0);
 
     // Check memory layout
-    assert(__heap_start <= heap_end);
+    assert((char *) __heap_start <= heap_end);
     assert(__heap_start >= __bss_end__);
     assert(heap_end < stack);
-    assert(stack < __StackTop);
+    assert(stack < (char *)__StackTop);
 
-    assert((char *) &init_zero >= __bss_start__);
-    assert((char *) &init_zero < __bss_end__);
+    assert(&init_zero >= __bss_start__);
+    assert(&init_zero < __bss_end__);
 
-    assert((char *) &init_value >= __data_start__);
-    assert((char *) &init_value < __data_end__);
+    assert(&init_value >= __data_start__);
+    assert(&init_value < __data_end__);
 
-    assert((char *) &const_value < __etext);            // Stored in flash ROM
+    assert(&const_value < __etext);             // Stored in flash ROM
 
     // Check that variables are initialized properly
     assert(init_zero == 0);

@@ -3,6 +3,13 @@
 //  Copyright (c) 2012-2013 Andrew Payne <andy@payne.org>
 //
 
+// Memory locations defined by the linker
+extern uint32_t __heap_start[];
+extern uint32_t __StackTop[];
+extern uint32_t __data_start__[], __data_end__[];
+extern uint32_t __bss_start__[], __bss_end__[];
+extern uint32_t __etext[];                // End of code/flash
+
 // From uart.c
 void UART0_IRQHandler() __attribute__((interrupt("IRQ")));
 int uart_write(char *p, int len);

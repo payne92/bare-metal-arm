@@ -8,10 +8,6 @@
 #include "freedom.h"
 #include "common.h"
 
-// Defined by linker
-extern char __heap_start[];
-extern char __StackTop[];
-
 extern char *_sbrk(int len);
 
 // Main program
@@ -36,8 +32,10 @@ int main(void)
     iprintf("\r\n\r\n====== Freescale Freedom FRDM-LK25Z\r\n");
     iprintf("Built: %s %s\r\n\r\n", __DATE__, __TIME__);
     heap_end = _sbrk(0);
-    iprintf("Heap:  %p to %p (%d bytes used)\r\n", __heap_start, heap_end, heap_end - __heap_start);
-    iprintf("Stack: %p to %p (%d bytes used)\r\n", &i, __StackTop, __StackTop - &i);
+    iprintf("Heap:  %p to %p (%d bytes used)\r\n", __heap_start, heap_end, 
+                heap_end - (char *)__heap_start);
+    iprintf("Stack: %p to %p (%d bytes used)\r\n", &i, __StackTop, 
+                (char *)__StackTop - &i);
     iprintf("%d bytes free\r\n", &i - heap_end);
     
     for(;;) {

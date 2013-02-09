@@ -36,8 +36,7 @@ int _read(int file, char *p, int len)
 // ------------------------------------------------------------------------------------
 // _sbrk(len) -- Allocate space on the heap
 //
-extern char __heap_start[];             // Defined by the linker script
-static char *heap_end = __heap_start;
+static char *heap_end = (char *) __heap_start;
 
 char *_sbrk(int incr)
 {
