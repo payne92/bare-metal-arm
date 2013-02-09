@@ -8,8 +8,6 @@
 #include "freedom.h"
 #include "common.h"
 
-// TODO: implement intial calibration step
-
 #define NCHANNELS 16
 static volatile uint16_t raw_counts[NCHANNELS];
 static volatile uint16_t base_counts[NCHANNELS];
