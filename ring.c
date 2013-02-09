@@ -49,31 +49,3 @@ inline void buf_put_byte(RingBuffer *buf, uint8_t val)
     if (buf->tail == buf->size)
         buf->tail = 0;
 }
-
-#ifdef OMIT
-inline int buf_get(RingBuffer *buf, uint8_t *out, int maxlen)
-{
-    int len = min(buf_len(buf), maxlen);
-    int chunk, rlen;
-    
-    rlen = len;
-    while (rlen) {
-        chunk = buf->tail - buf->head;
-        if(chunk < 0)
-            chunk = buf->size - buf->head;
-
-        memcpy(out, buf->data + buf->head, chunk);
-        out += chunk;
-        rlen -= chunk;
-        buf->head += chunk;
-        if(buf->head == buf->size)
-            buf->head = 0;
-    }
-    return len;
-}
-
-inline int buf_put(RingBuffer *buf, uint8_t *in, int len)
-{
-        
-}
-#endif
