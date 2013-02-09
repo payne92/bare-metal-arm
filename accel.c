@@ -74,17 +74,9 @@ inline void i2c_init(I2C_MemMapPtr p)
 // MMA8451 control functions
 //
 
-// this delay is very important, it may cause w-r operation failure.
-static void pause(void)
-{
-    int n;
-    for(n=0; n<40; n++)
-        asm("nop");
-}
-
 uint8_t mma8451_read(uint8_t addr)
 {
-    pause();
+    delay(1);
     i2c_start(I2C0_B);
     i2c_write(I2C0_B, MMA8451_I2C_ADDRESS | I2C_WRITE);
     i2c_write(I2C0_B, addr);
@@ -100,7 +92,7 @@ uint8_t mma8451_read(uint8_t addr)
 
 void mma8451_write(uint8_t addr, uint8_t data)
 {
-    pause();
+    delay(1);
     i2c_start(I2C0_B);
     i2c_write(I2C0_B, MMA8451_I2C_ADDRESS | I2C_WRITE);
     i2c_write(I2C0_B, addr);
