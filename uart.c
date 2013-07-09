@@ -22,7 +22,7 @@ void UART0_IRQHandler()
     
     status = UART0_S1;
     
-    // If transmit data register emtpy, and data in the transmit buffer,
+    // If transmit data register empty, and data in the transmit buffer,
     // send it.  If it leaves the buffer empty, disable the transmit interrupt.
     if ((status & UART_S1_TDRE_MASK) && !buf_isempty(tx_buffer)) {
         UART0_D = buf_get_byte(tx_buffer);
@@ -86,7 +86,7 @@ int uart_read(char *p, int len)
 //
 // uart_init() -- Initialize debug / OpenSDA UART0
 //
-//      The OpenSDA UART RX/TX is conntected to pins 27/28, PTA1/PTA2 (ALT2)
+//      The OpenSDA UART RX/TX is connected to pins 27/28, PTA1/PTA2 (ALT2)
 //
 void uart_init(int baud_rate)
 {
