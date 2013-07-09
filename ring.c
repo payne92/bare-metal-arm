@@ -34,12 +34,11 @@ inline int buf_isempty(RingBuffer *buf)
 
 inline uint8_t buf_get_byte(RingBuffer *buf)
 {
-    uint8_t item;
-    
-    item = buf->data[buf->head++];
+    const uint8_t item = buf->data[buf->head++];
+
     if (buf->head == buf->size)         // Wrap
         buf->head = 0;
-        
+
     return item;
 }
 
