@@ -29,7 +29,7 @@ int main(void)
     RGB_LED(0,100,0);                       // Green
 
     // Welcome banner
-    iprintf("\r\n\r\n====== Freescale Freedom FRDM-LK25Z\r\n");
+    iprintf("\r\n\r\n====== Freescale Freedom FRDM-KL25Z\r\n");
     iprintf("Built: %s %s\r\n\r\n", __DATE__, __TIME__);
     heap_end = _sbrk(0);
     iprintf("Heap:  %p to %p (%d bytes used)\r\n", __heap_start, heap_end, 
