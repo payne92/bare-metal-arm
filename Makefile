@@ -26,27 +26,33 @@ all: demo.srec demo.dump
 
 libbare.a: $(LIBOBJS)
 	$(AR) -rv libbare.a $(LIBOBJS)
-	
+
 clean:
 	rm -f *.o *.lst *.out libbare.a *.srec *.dump
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<
-	
+
 %.dump: %.out
 	$(OBJDUMP) --disassemble $< >$@
-	
+
 %.srec: %.out
 	$(OBJCOPY) -O srec $< $@
-	
+
 %.out: %.o mkl25z4.ld libbare.a
 	$(CC) $(CFLAGS) -T mkl25z4.ld -o $@ $< libbare.a
 	
 # -------------------------------------------------------------------------------
 # Download and unpack the GCC ARM embedded toolchain (binaries)
 
-GCC_ARM_URL = https://launchpad.net/gcc-arm-embedded/4.7/4.7-2013-q2-update/+download/gcc-arm-none-eabi-4_7-2013q2-20130614-linux.tar.bz2
+ARCH=
+ifeq ($(shell uname -s), Darwin)
+	ARCH=mac
+else
+	ARCH=linux
+endif
+DLPATH=https://launchpad.net/gcc-arm-embedded/4.7/4.7-2013-q2-update/+download/gcc-arm-none-eabi-4_7-2013q2-20130614-$(ARCH).tar.bz2
 
 gcc-arm:
-	curl --location $(GCC_ARM_URL)  | tar jx
-	ln -s gcc-arm-none-eabi-4_7-2013q2 gcc-arm
+	curl --location $(DLPATH) | tar jx
+	ln -s `ls -Artd gcc-arm-none-eabi* | tail -n 1` gcc-arm
