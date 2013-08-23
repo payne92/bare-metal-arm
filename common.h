@@ -59,9 +59,9 @@ typedef struct {
 } RingBuffer;
 
 void buf_reset(RingBuffer *buf, int size);
-int buf_len(RingBuffer *buf);
-int buf_isfull(RingBuffer *buf);
-int buf_isempty(RingBuffer *buf);
+int buf_len(const RingBuffer *buf);
+int buf_isfull(const RingBuffer *buf);
+int buf_isempty(const RingBuffer *buf);
 uint8_t buf_get_byte(RingBuffer *buf);
 void buf_put_byte(RingBuffer *buf, uint8_t val);
 

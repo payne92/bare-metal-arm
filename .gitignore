@@ -1,0 +1,6 @@
+# Object files.
+*.o
+*.o.lst
+
+# Library (archive) files.
+*.a

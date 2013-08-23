@@ -18,13 +18,17 @@ LIBOBJS = _startup.o syscalls.o uart.o delay.o accel.o touch.o usb.o \
 
 INCLUDES = freedom.h common.h
 
+.PHONY:	clean gcc-arm
+
+# -------------------------------------------------------------------------------
+
 all: demo.srec demo.dump
 
 libbare.a: $(LIBOBJS)
 	$(AR) -rv libbare.a $(LIBOBJS)
 	
 clean:
-	-rm *.o *.lst *.out libbare.a *.srec *.dump
+	rm -f *.o *.lst *.out libbare.a *.srec *.dump
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<
@@ -37,6 +41,8 @@ clean:
 	
 %.out: %.o mkl25z4.ld libbare.a
 	$(CC) $(CFLAGS) -T mkl25z4.ld -o $@ $< libbare.a
+	
+# -------------------------------------------------------------------------------
 
 # Download and unpack the GCC ARM embedded toolchain (binaries)
 gcc-arm:

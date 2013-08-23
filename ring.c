@@ -13,7 +13,7 @@ inline void buf_reset(RingBuffer *buf, int size)
     buf->size = size;
 }
 
-inline int buf_len(RingBuffer *buf)
+inline int buf_len(const RingBuffer *buf)
 {
     int len = buf->tail - buf->head;
     if (len < 0)
@@ -22,24 +22,23 @@ inline int buf_len(RingBuffer *buf)
     return len;
 }
 
-inline int buf_isfull(RingBuffer *buf)
+inline int buf_isfull(const RingBuffer *buf)
 {
     return buf_len(buf) == (buf->size-1);
 }
 
-inline int buf_isempty(RingBuffer *buf)
+inline int buf_isempty(const RingBuffer *buf)
 {
     return buf->head == buf->tail;
 }
 
 inline uint8_t buf_get_byte(RingBuffer *buf)
 {
-    uint8_t item;
-    
-    item = buf->data[buf->head++];
+    const uint8_t item = buf->data[buf->head++];
+
     if (buf->head == buf->size)         // Wrap
         buf->head = 0;
-        
+
     return item;
 }
 
