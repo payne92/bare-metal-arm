@@ -43,8 +43,10 @@ clean:
 	$(CC) $(CFLAGS) -T mkl25z4.ld -o $@ $< libbare.a
 	
 # -------------------------------------------------------------------------------
-
 # Download and unpack the GCC ARM embedded toolchain (binaries)
+
+GCC_ARM_URL = https://launchpad.net/gcc-arm-embedded/4.7/4.7-2013-q2-update/+download/gcc-arm-none-eabi-4_7-2013q2-20130614-linux.tar.bz2
+
 gcc-arm:
-	curl --location https://launchpad.net/gcc-arm-embedded/4.7/4.7-2012-q4-major/+download/gcc-arm-none-eabi-4_7-2012q4-20121208-linux.tar.bz2 | tar jx
-	ln -s gcc-arm-none-eabi-4_7-2012q4 gcc-arm
+	curl --location $(GCC_ARM_URL)  | tar jx
+	ln -s gcc-arm-none-eabi-4_7-2013q2 gcc-arm
