@@ -3,7 +3,7 @@ Bare Metal Arm
 
 This is a "bare metal" runtime for the 
 [Freescale Freedom FRDM-KL25Z](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KL25Z) 
-ARM development board ($12). It builds with the GCC ARM toolchain, with no other external dependencies. 
+ARM development board ($13). It builds with the GCC ARM toolchain, with no other external dependencies. 
 
 Quick start on Linux:
 * Clone the repo: `git clone https://github.com/payne92/bare-metal-arm.git`
@@ -19,6 +19,9 @@ and see the accelerometer and touch input status.
 
 References:
 * [Freescale Freedom FRDM-KL25Z](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KL25Z)
+** Where to buy: [Newark](http://www.newark.com/jsp/search/productdetail.jsp?SKU=28W5033&CMP=KNC-GPLA&mckv=|pcrid|27090073701|plid|),
+[Digi-Key](http://www.digikey.com/product-detail/en/FRDM-KL25Z/FRDM-KL25Z-ND/3529594?WT.mc_id=PLA_3529594)
+* [KL25 Sub-Family Reference Manual](http://cache.freescale.com/files/32bit/doc/ref_manual/KL25P80M48SF0RM.pdf)
 * [GCC ARM toolchain](https://launchpad.net/gcc-arm-embedded)
 * [Newlib C library](http://sourceware.org/newlib/)
 
