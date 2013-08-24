@@ -5,7 +5,7 @@ This is a "bare metal" runtime for the
 [Freescale Freedom FRDM-KL25Z](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KL25Z) 
 ARM development board ($13). It builds with the GCC ARM toolchain, with no other external dependencies. 
 
-Quick start on Linux:
+Quick start on Linux or Mac OS X:
 * Clone the repo: `git clone https://github.com/payne92/bare-metal-arm.git`
 * Grab and unpack GCC ARM toolchain: `cd bare-metal-arm; make gcc-arm`
 * `make`
