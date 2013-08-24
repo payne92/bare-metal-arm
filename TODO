@@ -9,9 +9,3 @@ Framework
 http://www.coactionos.com/embedded-design/36-context-switching-on-the-cortex-m3.html
 
 - Implement/include CMSIS library?
-
-Dev Tools
----------
-
-Python / UI tool to copy new binaries, and provide interface to serial port
-
