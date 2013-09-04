@@ -25,8 +25,14 @@ int main(void)
 
     // Run tests
     tests();
-    delay(500);
-    RGB_LED(0,100,0);                       // Green
+
+    // Blink the green LED to indicate booting
+    unsigned int pattern = 0b1100110011001100;
+    while(pattern) {
+        RGB_LED(0, pattern & 1 ? 100 : 0, 0);           // Set GREEN led based on LSB
+        pattern >>= 1;
+        delay(25);
+    }
 
     // Welcome banner
     iprintf("\r\n\r\n====== Freescale Freedom FRDM-KL25Z\r\n");
