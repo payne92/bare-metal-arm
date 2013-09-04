@@ -14,9 +14,8 @@ This will create a `demo.srec` image file to flash onto the development board.  
 the standard bootloader, plug the SDA USB port to a host computer and then copy the .SREC file
 to the FRDM-KL25Z block device.)  
 
-If everything is working, the RGB LEB will flash a few times and then be steady green.  
-You can access the USB SDA serial port (at 115,200 baud)
-and see the accelerometer and touch input status.
+If everything is working, the RGB LEB will flash a few times and then be steady green.  You can access the USB 
+SDA serial port (at 115,200 baud) and see the accelerometer and touch input status.
 
 References:
 * [Freescale Freedom FRDM-KL25Z](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KL25Z)
