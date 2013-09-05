@@ -51,10 +51,11 @@ clean:
 	$(CC) $(CFLAGS) -T mkl25z4.ld -o $@ $< libbare.a
 
 # -----------------------------------------------------------------------------
-# Burn/deploy by copying to the development board filesystem (Linux only)
-DEPLOY_VOLUME = $(shell df | fgrep FRDM | awk '{print $$6}')
+# Burn/deploy by copying to the development board filesystem
+#  Hack:  we identify the board by the filesystem size (128mb)
+DEPLOY_VOLUME = $(shell df -h | fgrep " 128M" | awk '{print $$6}')
 deploy: demo.srec
-	cp $< $(DEPLOY_VOLUME)/$<
+	dd conv=fsync bs=64k if=$< of=$(DEPLOY_VOLUME)/$<
 	
 # -----------------------------------------------------------------------------
 # Download and unpack the GCC ARM embedded toolchain (binaries)
