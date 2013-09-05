@@ -1,8 +1,6 @@
 
 
-GCCBIN = gcc-arm/bin
-
-export PATH := $(PATH):gcc-arm/bin
+export PATH := $(PATH):gcc-arm/binaries
 CC = arm-none-eabi-gcc
 AR = arm-none-eabi-ar
 OBJCOPY = arm-none-eabi-objcopy
