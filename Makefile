@@ -45,14 +45,14 @@ clean:
 # -------------------------------------------------------------------------------
 # Download and unpack the GCC ARM embedded toolchain (binaries)
 
-ARCH=
+DLPATH=https://launchpad.net/gcc-arm-embedded/4.7/4.7-2013-q2-update/+download/gcc-arm-none-eabi-4_7-2013q2-20130614
+
 ifeq ($(shell uname -s), Darwin)
-	ARCH=mac
+	DL_CMD=curl --location $(DLPATH)-mac.tar.bz2
 else
-	ARCH=linux
+	DL_CMD=wget --verbose $(DLPATH)-linux.tar.bz2 -O -
 endif
-DLPATH=https://launchpad.net/gcc-arm-embedded/4.7/4.7-2013-q2-update/+download/gcc-arm-none-eabi-4_7-2013q2-20130614-$(ARCH).tar.bz2
 
 gcc-arm:
-	curl --location $(DLPATH) | tar jx
+	$(DL_CMD) | tar jx
 	ln -s `ls -Artd gcc-arm-none-eabi* | tail -n 1` gcc-arm
