@@ -1,10 +1,18 @@
 
 
-GCCBIN = gcc-arm/bin
-CC = $(GCCBIN)/arm-none-eabi-gcc
-AR = $(GCCBIN)/arm-none-eabi-ar
-OBJCOPY = $(GCCBIN)/arm-none-eabi-objcopy
-OBJDUMP = $(GCCBIN)/arm-none-eabi-objdump
+# If the GCC ARM tools are already on the path, use them. Otherwise, use 
+# the local version in gcc-arm/bin
+GCC_ARM_VERSION := $(shell arm-none-eabi-gcc --version 2>/dev/null)
+ifdef GCC_ARM_VERSION
+	GCCDIR=
+else
+	GCCDIR=gcc-arm/bin/
+endif
+
+CC = $(GCCDIR)arm-none-eabi-gcc
+AR = $(GCCDIR)arm-none-eabi-ar
+OBJCOPY = $(GCCDIR)arm-none-eabi-objcopy
+OBJDUMP = $(GCCDIR)arm-none-eabi-objdump
 
 DEBUG_OPTS = -g3 -gdwarf-2 -gstrict-dwarf
 OPTS = -Os
