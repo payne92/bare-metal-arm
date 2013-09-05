@@ -18,9 +18,9 @@ LIBOBJS = _startup.o syscalls.o uart.o delay.o accel.o touch.o usb.o \
 
 INCLUDES = freedom.h common.h
 
-.PHONY:	clean gcc-arm
+.PHONY:	clean gcc-arm deploy
 
-# -------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 all: demo.srec demo.dump
 
@@ -41,8 +41,14 @@ clean:
 
 %.out: %.o mkl25z4.ld libbare.a
 	$(CC) $(CFLAGS) -T mkl25z4.ld -o $@ $< libbare.a
+
+# -----------------------------------------------------------------------------
+# Burn/deploy by copying to the development board filesystem (Linux only)
+DEPLOY_VOLUME = $(shell df | fgrep FRDM | awk '{print $$6}')
+deploy: demo.srec
+	cp $< $(DEPLOY_VOLUME)/$<
 	
-# -------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Download and unpack the GCC ARM embedded toolchain (binaries)
 
 DLPATH=https://launchpad.net/gcc-arm-embedded/4.7/4.7-2013-q2-update/+download/gcc-arm-none-eabi-4_7-2013q2-20130614
