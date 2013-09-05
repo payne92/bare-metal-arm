@@ -1,6 +1,4 @@
 
-
-
 # Use ARM tools if already on PATH, otherwise look for tools
 # locally in gcc-arm/bin
 ifneq ($(shell which arm-none-eabi-gcc), "")
