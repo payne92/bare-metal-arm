@@ -1,5 +1,5 @@
 //
-// uart.c -- Delay fumctions
+// uart.c -- Delay functions
 //
 //  Copyright (c) 2012-2013 Andrew Payne <andy@payne.org>
 //
