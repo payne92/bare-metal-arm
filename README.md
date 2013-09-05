@@ -11,8 +11,8 @@ Quick start on Linux or Mac OS X:
 * `make`
 
 This will create a `demo.srec` image file to flash onto the development board.  (If you're using
-the standard bootloader, plug the SDA USB port to a host computer and then copy the .SREC file
-to the FRDM-KL25Z block device.)  
+the standard bootloader, plug the SDA USB port to a host computer.  On Linux, type `make deploy`.  On other systems,
+copy the .SREC file to the FRDM-KL25Z volume.)  
 
 If everything is working, the RGB LEB will flash a few times and then be steady green.  You can access the USB 
 SDA serial port (at 115,200 baud) and see the accelerometer and touch input status.
