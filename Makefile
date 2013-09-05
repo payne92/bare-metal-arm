@@ -53,7 +53,7 @@ clean:
 # -----------------------------------------------------------------------------
 # Burn/deploy by copying to the development board filesystem
 #  Hack:  we identify the board by the filesystem size (128mb)
-DEPLOY_VOLUME = $(shell df -h | fgrep " 128M" | awk '{print $$6}')
+DEPLOY_VOLUME = $(shell df -h 2>/dev/null | fgrep " 128M" | awk '{print $$6}')
 deploy: demo.srec
 	dd conv=fsync bs=64k if=$< of=$(DEPLOY_VOLUME)/$<
 	
