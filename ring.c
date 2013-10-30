@@ -32,19 +32,23 @@ inline int buf_isempty(const RingBuffer *buf)
     return buf->head == buf->tail;
 }
 
+inline int advance(uint16_t i, uint16_t size)
+{
+    if (++i >= size)             // Avoid modulo or divide
+        i = 0;
+
+    return i;
+}
+
 inline uint8_t buf_get_byte(RingBuffer *buf)
 {
-    const uint8_t item = buf->data[buf->head++];
-
-    if (buf->head == buf->size)         // Wrap
-        buf->head = 0;
-
+    const uint8_t item = buf->data[buf->head];
+    buf->head = advance(buf->head, buf->size);
     return item;
 }
 
 inline void buf_put_byte(RingBuffer *buf, uint8_t val)
 {
-    buf->data[buf->tail++] = val;
-    if (buf->tail == buf->size)
-        buf->tail = 0;
+    buf->data[buf->tail] = val;
+    buf->tail = advance(buf->tail, buf->size);
 }
