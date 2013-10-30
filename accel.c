@@ -120,11 +120,3 @@ int16_t _read_reg14(int reg)
 int16_t accel_x(void) {return _read_reg14(0x01);}
 int16_t accel_y(void) {return _read_reg14(0x03);}
 int16_t accel_z(void) {return _read_reg14(0x05);}
-
-
-
-
-
-
-
-
