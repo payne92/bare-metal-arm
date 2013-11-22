@@ -46,3 +46,10 @@ The interrupt vectors and reset code are in `_startup.c`.  The CPU comes out of 
 * Jumps to `_start()` in the Newlib C library
 
 After the C library is done initializing, it invokes `main()` (implemented in `demo.c`).
+
+Contact
+-------
+
+[andy@payne.org](mailto:andy@payne.org)
+
+[blog.payne.org](http://blog.payne.org)
