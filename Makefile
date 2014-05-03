@@ -60,7 +60,7 @@ deploy: demo.srec
 # -----------------------------------------------------------------------------
 # Download and unpack the GCC ARM embedded toolchain (binaries)
 
-DLPATH=https://launchpad.net/gcc-arm-embedded/4.7/4.7-2013-q2-update/+download/gcc-arm-none-eabi-4_7-2013q2-20130614
+DLPATH=https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q1-update/+download/gcc-arm-none-eabi-4_8-2014q1-20140314
 
 ifeq ($(shell uname -s), Darwin)
 	DL_CMD=curl --location $(DLPATH)-mac.tar.bz2
