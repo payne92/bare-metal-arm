@@ -7,7 +7,9 @@ ARM development board ($13). It builds with the GCC ARM toolchain, with no other
 
 Quick start on Linux or Mac OS X:
 * Clone the repo: `git clone https://github.com/payne92/bare-metal-arm.git`
-* Grab and unpack GCC ARM toolchain: `cd bare-metal-arm; make gcc-arm`
+* Grab and unpack GCC ARM toolchain:
+  * On Ubuntu: `sudo apt-get install gcc-arm-none-eabi`
+  * On Mac & ohter Linux: `cd bare-metal-arm; make gcc-arm`
 * `make`
 
 This will create a `demo.srec` image file to flash onto the development board.  (If you're using
