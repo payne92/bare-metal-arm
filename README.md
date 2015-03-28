@@ -54,4 +54,4 @@ Contact
 
 [andy@payne.org](mailto:andy@payne.org)
 
-[blog.payne.org](http://blog.payne.org)
+[payne.org/blog](http://payne.org/blog)
